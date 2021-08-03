@@ -1,12 +1,12 @@
 
-font name: Barlow-Black
+font name: Barlow-Bold
 font link: https://fonts.google.com/specimen/Barlow
 font author: Jeremy Tribby
 font author site: https://tribby.com/
-Slogan Font: Questrial-Regular.otf
+Slogan Font: WorkSans-Light.ttf
 
 icon designer: Caitlin McCormick
 icon designer link: /cmccormick
         
-{"bg":"transparent","icon-gradient-0":"#920DE9","icon-gradient-1":"#1536F1","font":"#000000","slogan":"#141414"}
+{"bg":"transparent","font":"#000000","icon-gradient-0":"#920DE9","icon-gradient-1":"#1536F1","slogan":"#141414"}
       
