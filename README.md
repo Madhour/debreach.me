@@ -13,7 +13,7 @@
 <img align='right' src='img/App-images/app_mockup.png' width="250" />
 
 
-DEBREACH.ME is a Web-App built entirely using Amazon Web Services (AWS). <br>
+DEBREACH.ME is a serverless Web-App built entirely using Amazon Web Services (AWS). <br>
 It provides a simple solution to check if passwords were compromised in past data breaches. <br>
 The DEBREACH.ME API allows direct queries to the database without the use of the UI.
 
@@ -67,7 +67,7 @@ def lambda_handler(event, context):
     
     
             add_to_db = ddb.put_item(
-                 TableName = ...,
+                 TableName = XXX,
                  Item = {
                      'id': {'S': str(id_val)},
                      'pwhash': {'S': str(pwhash)}
@@ -92,8 +92,8 @@ def lambda_handler(event, context):
 ## Database
 For the Database, I opted for the NoSQL DynamoDB. The architecture is as follows:
 
-```JSON
-type ... @model @key(name: "getHash", fields: ["pwhash"], queryField: "getHash"){
+```Js
+type XXX @model @key(name: "getHash", fields: ["pwhash"], queryField: "getHash"){
   id: ID!
   pwhash: String!
 }
@@ -106,7 +106,7 @@ For the web-app, GraphQL is used to query the database. Although it isn't as est
 # API
 The API is a RESTful API built using AWS API Gateway. It queries the DynamoDB directly and maps the results as follows:
 
-```JSON
+```Js
 #set($inputRoot = $input.path('$'))
 {
     "breached": 
