@@ -10,13 +10,13 @@
 </p>
 
 ---
-
-<table border="0">
- <tr>
-    <td><span>What is <b>DEBREACH.ME</b>? <br>
+<img align='right' src='img/App-images/app_mockup.png' width="300" />
+    <span>
+    <br>
     DEBREACH.ME is a Web-App built entirely using Amazon Web Services (AWS). <br>
-    It provides a simple solution to check if passwords were compromised in past data breaches.
-    <span></td>
-    <td><img src='img/App-images/app_mockup.png' width="300" /></td>
- </tr>
-</table>
+    It provides a simple solution to check if passwords were compromised in past data breaches. The DEBREACH.ME API allows direct queries to the database without the use of the UI.
+    <span>
+
+
+
+
