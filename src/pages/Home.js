@@ -1,15 +1,13 @@
 import { ReactComponent as Logo } from '../logo.svg';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState } from 'react';
 import sha1 from 'sha1';
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import awsExports from '../aws-exports';
 import { getHash } from '../graphql/queries';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Col, Row, Container, FormControl, InputGroup, Spinner} from 'react-bootstrap';
-import breached from '../img/breached.svg';
-import { cloneDeepWithoutLoc } from '@babel/types';
+import { Button, Col, Row, Container, FormControl, InputGroup, Spinner, Card } from 'react-bootstrap';
 
 
 
@@ -22,8 +20,10 @@ export default function Home() {
     const [password, setPassword] = useState("password")
     const [loading, setLoading] = useState(false)
     var sha1 = require('sha1');
-    
+
+    //Gets Hash as input, sets it to uppercase and queries the DB via GraphQL for matching entries
     async function fetchHash(val) {
+        //The API call sets of a loading animation and resets the app background color (from green/red to purple)
         setLoading(true)
         setBreachedStatus(null)
         try {
@@ -37,6 +37,8 @@ export default function Home() {
         }
     }
 
+    /* 
+    //HTML requests
     function httpGetAsync(theUrl, callback) {
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function () {
@@ -47,8 +49,7 @@ export default function Home() {
         xmlHttp.send(null);
     }
 
-    /* example using the debreach api
-    
+    //This function utilizes the debreach.me API instead of the GraphQL API to query the DB
     function fetchHashApi(val) {
         var ApiUrl = "https://api.debreach.me/passwords/" + val
         try {
@@ -63,6 +64,7 @@ export default function Home() {
     }
     */
 
+    //Changes the breachedStatus depending on the DB-Query results (no entry=clear et vice versa)
     async function updateStatus(results) {
         if (results == 0) {
             const breachedStatus = "Clear"
@@ -73,6 +75,7 @@ export default function Home() {
         }
     }
 
+    //Gets password from input field
     function getData(val) {
         setPassword(val.target.value)
     }
@@ -80,38 +83,56 @@ export default function Home() {
 
     return (
         <div>
+
+            {
+                // App-header changes color in css based on breachedStatus
+            }
             <div className={`App-header ${breachedStatus}`}>
                 <Logo className="d-block mx-auto img-fluid" style={{ width: '800px', align: 'center' }} />
             </div>
+
             <div className='App-body'>
                 <span>Find out if  your password was compromised in a data breach!</span>
-                {/*<Container fluid="md">
-                    <Row>
-                        <Col>
-                            <input type="password" onChange={getData} placeholder="Password" />
-                        </Col>
-                        <Col>
-                            <Button onClick={() => fetchHash(sha1(password))} variant="secondary">Check</Button>
+                <Container >
+
+                    {
+                        // Password is first hashed (sha1) and then passed to the fetchHash function
+                    }
+                    <Row className="justify-content-md-center">
+                        <Col xs={12} md={8}>
+                            <InputGroup className="mt-3 mb-3">
+                                <FormControl
+                                    placeholder="Password"
+                                    type="password"
+                                    onChange={getData}
+                                />
+                                <Button onClick={() => fetchHash(sha1(password))} variant="outline-secondary" id="button-addon2">
+                                    Check
+                                </Button>
+                            </InputGroup>
                         </Col>
                     </Row>
-    </Container>*/}
-                <Container >
-                <Row className="justify-content-md-center">
-                <Col xs={12} md={8}>
-                <InputGroup className="mt-3 mb-3">
-                    <FormControl
-                        placeholder="Password"
-                        type="password"
-                        onChange={getData}
-                    />
-                    <Button onClick={() => fetchHash(sha1(password))} variant="outline-secondary" id="button-addon2">
-                        Check
-                    </Button>
-                </InputGroup>
-                </Col>
-                </Row>
                 </Container>
-                <h2>Status: {loading ? <Spinner animation='border'/>:breachedStatus}</h2>
+
+                {
+                    //depending on the breachedStatus, a message will appear and the Card title with further information will be set to visible
+                }
+                <h2>Status: {loading ? <Spinner animation='border' /> : breachedStatus}</h2>
+                <div className={`Breach-info ${breachedStatus}`}>
+                    <Card border="secondary" style={{ width: '20rem', fontSize: '12px', color: 'black' }}>
+                        <Card.Body>
+                            <Card.Title>How to protect yourself!</Card.Title>
+                            <Card.Text>
+                                If you have used that password before then change it immediately.
+                                To enhance your security, use a password manager.
+                                For further information, check below:
+                            </Card.Text>
+                            <div className='text-center'>
+                                <Button variant="outline-dark" href="https://privacytools.io/software/passwords/" >Privacytools.io</Button>
+                            </div>
+                        </Card.Body>
+                    </Card>
+                </div>
             </div>
         </div>
 

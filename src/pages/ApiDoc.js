@@ -16,7 +16,7 @@ export default function ApiDoc() {
                     A lightweight API to check for breached passwords in your application! <br/><br/>
                 </span>
 
-                <SyntaxHighLighter language="bash" style={gruvboxDark}>
+                <SyntaxHighLighter showLineNumbers={true} language="bash" style={gruvboxDark}>
                     {
                         'https://api.debreach.me/passwords/<sha1-Hash>'
                     }
@@ -27,7 +27,7 @@ export default function ApiDoc() {
                     The API accepts only uppercase letters, and returns a simple JSON-Object with the status (Breached/Unbreached):<br/><br/>
                 </span>
 
-                <SyntaxHighLighter language="JSON" style={gruvboxDark}>
+                <SyntaxHighLighter showLineNumbers={true} language="JSON" style={gruvboxDark}>
                     {
                         `{"breached": "true"}`
                     }

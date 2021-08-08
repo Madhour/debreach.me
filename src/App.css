@@ -74,3 +74,25 @@
   color: white;
 
 }
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  background: #202020;
+}
+
+.Breach-info {
+  visibility: hidden;
+}
+
+.Breach-info.Clear {
+  visibility: hidden;
+}
+
+.Breach-info.Critical {
+  visibility: visible;
+}
