@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
+
+* {
+  font-family: 'Barlow', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.home, .api, .about{
+  display: flex;
+  height: 90vh;
+  align-items: center; 
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.App-header {
+  background-image: linear-gradient( 109.6deg,  #920DE9 50.2%, #223ac2 91.1% );
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+}
+
+.App-header.Clear {
+  background-image: linear-gradient( 102.1deg,  rgba(96,221,142,1) 8.7%, rgba(24,138,141,1) 88.1% );
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+}
+
+.App-header.Critical {
+  background-image: linear-gradient( 88.7deg,  rgba(205,33,42,1) 10.6%, rgba(236,95,5,1) 90% );
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+}
+.App-body {
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(59, 59, 59) 0%, rgb(32, 32, 32) 81.3% );
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+}
+
+.Api-body {
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(59, 59, 59) 0%, rgb(32, 32, 32) 81.3% );
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+}

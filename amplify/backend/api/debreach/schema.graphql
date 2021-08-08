@@ -1,0 +1,4 @@
+type Debreach @model @key(name: "getHash", fields: ["pwhash"], queryField: "getHash"){
+  id: ID!
+  pwhash: String!
+}
